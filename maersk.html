@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <style>
+.customClass {
+	margin-bottom: 3px;
+	color: #ffffff;
+	width: 27%;
+	height: 176px;
+	font-size: 67px;
+}
+
+
+/*small devices (phones, 959px and down) */
+
+@media only screen and (max-width: 959px) {
+	.customClass {
+		background-color: #ccc !important;
+		margin-bottom: 3px;
+		color:#000000;
+		width: 100%;
+		font-size: 23px;
+		height: 42px;
+	}
+	#addbutoons {
+		margin-left: 0% !important;
+	}
+	.buttonsStyles {
+		position: static !important;
+		margin-bottom: 10px;
+	}
+	.title {
+		background-color: #333333;
+		color: #fff;
+		padding: 10px 0 5px 15px;
+		text-align: center;
+		font-size: 25px;
+	}
+}
+
+#addbutoons {
+	text-align: center;
+	display: inline-block;
+	width: 100%;
+	margin-left: -9%;
+}
+
+.buttonsStyles {
+	position: absolute;
+	right: 15px;
+}
+.btnStyles{
+   background-color: #2B8EAD;
+   border-radius:10px;
+}
+
+.col-6 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+     max-width: 75% !important; 
+    padding-top: 3px;
+}
+      </style>
+      <title>maersk</title>
+   </head>
+   <body >
+      <h1 class="col-sm-12 title text-center"> Shuffle and Sort</h1>
+      <div class="container-fluid">
+         <div class="row buttonsStyles">
+            <div class="col-6">
+               <button class="btn btn-primary float-right btnStyles" onclick='shuffle()'> Shuffle </button>
+            </div>
+            <div class="col-6">
+               <button class="btn btn-primary float-left btnStyles" onclick='sort()'> Sort </button>
+            </div>
+         </div>
+         <div class="mb-3" id="addbutoons">
+         </div>
+		 <h1><b>MAERSK</b></h1>
+      </div>     
+      <script type="text/javascript">         
+         var buttonsToCreate = ['1','2','3','4','5','6','7','9','8'];
+         var colorsArray = ['#000000','#2B8EAD','#333333' ,'#6F98A8','#666666','#BFBFBF','#EFEFEF', '#2F454E','#72C3DC']
+         var buttonContainer = document.getElementById('addbutoons');
+         function allthings(){
+			  var i, j, newButton; 		   
+			 for (i = 0; i < buttonsToCreate.length; i++) {
+				 newButton = document.createElement('input');
+				 newButton.type = 'button';
+				 newButton.value = buttonsToCreate[i];
+				 newButton.id = buttonsToCreate[i];
+				 newButton.className  = 'customClass';  
+			 for (j = 0; j < colorsArray.length; j++) {
+				 newButton.style.backgroundColor = colorsArray[i];
+			     newButton.style.borderLeftColor   = colorsArray[i];
+			     newButton.style.borderLeftWidth    = '12px';
+			   }
+			 buttonContainer.appendChild(newButton);
+			 }
+         };
+         
+         function shuffle() {         
+			 var ctr = buttonsToCreate.length, temp, index;
+			 buttonContainer.innerHTML = '';         
+			 while (ctr > 0) {         
+			   index = Math.floor(Math.random() * ctr);         
+			   ctr--;         
+			   temp = buttonsToCreate[ctr];
+			   buttonsToCreate[ctr] = buttonsToCreate[index];
+			   buttonsToCreate[index] = temp;
+			 }
+			 allthings();
+           }
+         function sort() {	    
+			 buttonContainer.innerHTML = '';
+			 buttonsToCreate.sort();		
+			 allthings();		
+           }
+         allthings();
+      </script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   </body>
+</html>
